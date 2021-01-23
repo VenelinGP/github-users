@@ -1,1 +1,27 @@
-<p>user-repos works!</p>
+<section class="section">
+<div class="box" *ngIf="user">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+            <img [src]="user.avatar_url" width="150" height="150">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{user.login | titlecase}}  </strong> <small>@{{user.name}}</small>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="section">
+    <div class="content is-medium">
+        <h1>Repos</h1>
+        <div *ngIf="repos"></div>
+        <ul *ngFor="let repo of repos">
+          <li>{{repo.name}}</li>
+        </ul>
+    </div>
+</section>
