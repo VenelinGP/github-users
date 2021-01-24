@@ -18,7 +18,7 @@
               </p>
             </div>
             <div class="column">
-              <app-user-details *ngIf="showDetails" [currentUser]='currentUser' (newBackgroundColor)="changeBackground($event)"></app-user-details>
+              <app-user-details *ngIf="showDetails" [currentUser]='currentUser' (newBackgroundColor)="changeBackground($event)" [rating]="rating"></app-user-details>
             </div>
           </div>
          
@@ -27,6 +27,9 @@
           <div class="level-left">
             <div class="level-item">
               <button class="button is-info is-small" (click)="showHideDetails()">User Details</button>
+            </div>
+            <div class="level-item">
+              <button class="button is-info is-small" (click)="addRate(1)">Rate</button>
             </div>
           </div>
         </nav>
@@ -37,9 +40,13 @@
 <section class="section">
     <div class="content is-medium">
         <h1>Repos</h1>
-        <div *ngIf="repos"></div>
-        <ul *ngFor="let repo of repos">
-          <li>{{repo.name}}</li>
-        </ul>
+        <div *ngIf="(repos| async); else loading">
+          <ul *ngFor="let repo of repos | async">
+            <li>{{repo.name}}</li>
+          </ul>
+        </div>
+        <ng-template #loading>
+          <app-loader></app-loader>
+      </ng-template>
     </div>
 </section>

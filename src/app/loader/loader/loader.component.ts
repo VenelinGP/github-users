@@ -5,15 +5,6 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css']
 })
-export class LoaderComponent implements OnInit {
-  @Input() loading: any;
-  constructor() { 
-    console.log(this.loading);
-  }
-
-  ngOnInit(): void {
-  }
-  afterNgInit(){
-
-  }
+export class LoaderComponent{
+  constructor() { }
 }

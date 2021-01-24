@@ -13,6 +13,7 @@ export class UserReposComponent implements OnInit {
   repos: any;
   showDetails: boolean = false;
   changeBackgroundColor = false;
+  rating = 0;
   constructor(
     private userService: UserService,
     private route: ActivatedRoute
@@ -23,10 +24,10 @@ export class UserReposComponent implements OnInit {
     this.route.params
       .subscribe(params => {
         this.username = params['username'];
-        this.userService.getUser(this.username)
+        this.currentUser = this.userService.getUser(this.username)
         .subscribe(user => this.currentUser = user)
-        this.userService.getUserRepos(this.username)
-          .subscribe(repos => this.repos = repos)
+        this.repos = this.userService.getUserRepos(this.username);
+          // .subscribe(repos => this.repos = repos)
       })
   }
 
@@ -36,5 +37,9 @@ export class UserReposComponent implements OnInit {
 
   changeBackground(val: boolean){
     this.changeBackgroundColor = val;
+  }
+
+  addRate(val:number){
+    this.rating+=val;
   }
 }

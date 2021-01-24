@@ -11,9 +11,11 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    
+    // set a timeout to show the loader
+    setTimeout(() => {
       this.users = this.userService.getUsers();
-
+    }, 3000);
+    // this.users = this.userService.getUsers();
   }
 
 }
