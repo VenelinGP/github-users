@@ -9,8 +9,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserReposComponent implements OnInit {
   username: string = '';
-  user: any;
+  currentUser: any;
   repos: any;
+  showDetails: boolean = false;
   constructor(
     private userService: UserService,
     private route: ActivatedRoute
@@ -22,15 +23,13 @@ export class UserReposComponent implements OnInit {
       .subscribe(params => {
         this.username = params['username'];
         this.userService.getUser(this.username)
-        .subscribe(user=>{
-          console.log("User: ", user);
-          this.user = user;
-        })
+        .subscribe(user => this.currentUser = user)
         this.userService.getUserRepos(this.username)
-          .subscribe(repos=>{
-            console.log(repos);
-            this.repos = repos;
-        })
+          .subscribe(repos => this.repos = repos)
       })
+  }
+
+  showHideDetails(){
+    this.showDetails = !this.showDetails
   }
 }

@@ -1,23 +1,22 @@
-<!-- <div >
-    <div *ngFor="let user  of users | async">
-        <h4>{{user.login }}</h4>
-    </div>
-</div> -->
-
 <section class="section">
     <div class="container">
         <div class="columns is-multiline" *ngIf="users">
-            <div class="column is-2" *ngFor="let user  of users | async">
+            <div class="column is-2"*ngFor="let user of users | async">
                 <div class="card">
                     <div class="card-content">
                         <a routerLink='{{user.login}}'>
                             <h3>{{user.login}}</h3>
                         </a>
-                        
                     </div>
                 </div>
-                
             </div>
-        </div>
+            <!-- <div *ngIf="users | withLoading | async as obj">
+                <div>{{obj}}</div>
+                <div> {{ obj.loading }}</div>
+                <div> {{ obj.value }}</div> -->
+                <!-- <app-loader [loading]="users.loading">        
+                </app-loader> -->
+            <!-- </div> -->
+        </div>        
     </div>
 </section>

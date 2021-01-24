@@ -1,17 +1,35 @@
 <section class="section">
-<div class="box" *ngIf="user">
+<div class="box" *ngIf="currentUser">
     <article class="media">
       <div class="media-left">
         <figure class="image is-64x64">
-            <img [src]="user.avatar_url" width="150" height="150">
+            <img [src]="currentUser.avatar_url" width="150" height="150">
         </figure>
       </div>
       <div class="media-content">
         <div class="content">
-          <p>
-            <strong>{{user.login | titlecase}}  </strong> <small>@{{user.name}}</small>
-          </p>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <p>
+                <strong>{{currentUser.login | titlecase}}  </strong>
+              </p>
+              <p>
+                <small>name: {{currentUser.name}}</small>
+              </p>
+            </div>
+            <div class="column">
+              <app-user-details *ngIf="showDetails" [currentUser]='currentUser'></app-user-details>
+            </div>
+          </div>
+         
         </div>
+        <nav class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <button class="button is-info is-small" (click)="showHideDetails()">User Details</button>
+            </div>
+          </div>
+        </nav>
       </div>
     </article>
   </div>
