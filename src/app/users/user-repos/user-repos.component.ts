@@ -12,6 +12,7 @@ export class UserReposComponent implements OnInit {
   currentUser: any;
   repos: any;
   showDetails: boolean = false;
+  changeBackgroundColor = false;
   constructor(
     private userService: UserService,
     private route: ActivatedRoute
@@ -31,5 +32,9 @@ export class UserReposComponent implements OnInit {
 
   showHideDetails(){
     this.showDetails = !this.showDetails
+  }
+
+  changeBackground(val: boolean){
+    this.changeBackgroundColor = val;
   }
 }

@@ -1,5 +1,5 @@
 <section class="section">
-<div class="box" *ngIf="currentUser">
+<div class="box" *ngIf="currentUser" [ngClass]="{'backGroundColor' : changeBackgroundColor}">
     <article class="media">
       <div class="media-left">
         <figure class="image is-64x64">
@@ -18,7 +18,7 @@
               </p>
             </div>
             <div class="column">
-              <app-user-details *ngIf="showDetails" [currentUser]='currentUser'></app-user-details>
+              <app-user-details *ngIf="showDetails" [currentUser]='currentUser' (newBackgroundColor)="changeBackground($event)"></app-user-details>
             </div>
           </div>
          

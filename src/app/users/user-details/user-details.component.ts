@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-details',
@@ -9,11 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class UserDetailsComponent implements OnInit {
   @Input() currentUser: any;
+  @Output() newBackgroundColor = new EventEmitter<boolean>();
   
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.currentUser);
+  }
+
+  isChanged(val: boolean){
+    this.newBackgroundColor.emit(val);
   }
 
 }
